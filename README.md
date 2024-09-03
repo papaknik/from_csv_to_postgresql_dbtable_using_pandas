@@ -18,9 +18,9 @@ Below you can find a Python script that automatically creates and populates tabl
   script and avoid possible uncommitted transactions or other issues.
 
 - File Names: Check for the validity of your file names because this will be the name of the table in your DB and may lead to issues. Spaces, for example, are not allowed for naming a DB table. The script below replaces
-  any spaces in the file name with an underscore (_). Nevertheless it is better to check this manually, since a file name like 'The&nbsp;&nbsp;&nbsp;Average&nbsp;&nbsp;Noob' will be replaced with 'the___average__noob', which might not be convenient for a DB table name.
+  any spaces in the file name with an underscore (_). Nevertheless it is better to check this manually, since a file name like 'The&nbsp;&nbsp;&nbsp;Average&nbsp;&nbsp;Noob' will be replaced with 'the___average__noob', which might not be convenient when querying.
 
-- Database Setup: Create an empty database before running the script. You may use the script to add additional tables to an existing DB, but you should be extremely careful with the existing DB schema, and its constraints for    foreign keys, data types, indexing, etc. 
+- Database Setup: Create an empty database before running the script. You may use the script to add additional tables to an existing DB, but you should be extremely careful with the existing DB schema, and its constraints for foreign keys, data types, indexing, etc. 
 
 - Testing: The script has been tested with a limited number of files (up to 50). Feel free to experiment, and you may discover more interesting things.
 
