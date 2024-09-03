@@ -6,7 +6,7 @@ Below you can find a Python script that automatically creates and populates tabl
 
 - Required Libraries:
 
-  Ensure you have the required libraries installed:
+Ensure you have the required libraries installed:
   ```
   pip install pandas sqlalchemy psycopg2
   ```
