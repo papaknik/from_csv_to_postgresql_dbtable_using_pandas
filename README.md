@@ -56,9 +56,14 @@ with db.connect() as conn:
 `df.columns = [col.lower() for col in df.columns]` ensures that columns in the tables are case-insensitive, simplifying queries without needing double quotes every time you need to query a column
 - CSV file name Handling:
   
-The file names of the CSVs where also converted with `.lower()` method and any empty spaces were replaced by'_', with `table_name = file.replace(' ', '_').lower()`. Otherwise various issues and errors may arise.
+The file names of the CSVs where also converted with `.lower()` method and any empty spaces were replaced by'_', with `table_name = file.replace(' ', '_').lower()`. Otherwise various issues and errors may arise
 - Disclaimer:
-  
-This script is provided "as-is" for educational and practice purposes.
+
+This script is provided "as-is" for educational and practice purposes
+
+## Sample Data Attribution
+
+The sample CSV files in this repository are obtained from [Kaggle]([https://www.kaggle.com](https://www.kaggle.com/datasets/mahendran1/icc-cricket) and used solely for demonstration purposes. The data files are © Original Authors.
+
 
 Feel free to experiment, and I hope you find this brief tutorial helpful!
