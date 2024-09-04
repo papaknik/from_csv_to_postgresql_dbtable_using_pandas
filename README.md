@@ -44,7 +44,7 @@ db = create_engine(conn_string)
 path = 'path/to/your/csv/files'  # Replace with the path to the CSV files
 
 # Automatically generate the list of CSV file names
-files = [f for f in os.listdir(path) if f.endswith('.csv')] # any CSVs in the above defined path will be inserted in the list 
+files = [f for f in os.listdir(path) if f.endswith('.csv')] # any CSVs in the above defined path will populate the list 
 
 # Remove spaces and lowercase file names, then load them into the database
 with db.connect() as conn: 
