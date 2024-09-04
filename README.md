@@ -37,7 +37,7 @@ from sqlalchemy import create_engine
 import os
 
 # Database connection
-conn_string = 'postgresql://postgres::"YOUR_POSTGRESQL_PASSWORD"@localhost/demo'  # Replace with your PostgreSQL password
+conn_string = 'postgresql://postgres:"YOUR_POSTGRESQL_PASSWORD"@localhost/demo'  # Replace with your PostgreSQL password
 db = create_engine(conn_string)
 
 # Path to the folder containing the CSV files
