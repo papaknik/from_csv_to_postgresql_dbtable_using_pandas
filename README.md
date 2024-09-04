@@ -12,7 +12,7 @@ Ensure you have the required libraries installed:
   ```
 - Database Setup:
   
-Create an empty database with a name of your preference before running the script. You may also use the script to add additional tables to an existing DB, but you should be **extremely careful with the existing DB schema**, and possible constraints for foreign keys, data types, indexing, etc. Note that if the files are large enough (e.g., more than 1,000,000 records), be patient and wait a few seconds before refreshing your DB GUI tool and see the created tables in the DB
+Create an empty database with a name of your preference before running the script. You may also use the script to add additional tables to an existing DB, but you should be **extremely careful with the existing DB schema**, and possible constraints for foreign keys, data types, indexing, etc. Note that if the files are large enough (e.g., more than 2,000,000 records), be patient and wait a couple of minutes before refreshing your DB GUI tool and see the created tables in the DB
 
 - 🔑 Primary and Foreign Keys:
   
@@ -34,20 +34,24 @@ Here’s an example of the script for an empty PostgreSQL database named 'demo':
 ```python
 import pandas as pd
 from sqlalchemy import create_engine
+import os
 
 # Database connection
-conn_string = 'postgresql://postgres:"YOUR_POSTGRESQL_PASSWORD"@localhost/demo'
+conn_string = 'postgresql://postgres::"YOUR_POSTGRESQL_PASSWORD"@localhost/demo'  # Replace with your PostgreSQL password
 db = create_engine(conn_string)
 
-# File paths
-files = ['file001', 'file002', 'file003', 'file004']  # Replace with your CSV file names
-path = '/path/to/your/csv/files/'  # Replace with the path to your CSV files
+# Path to the folder containing the CSV files
+path = 'path/to/your/csv/files'  # Replace with the path to the CSV files
 
+# Automatically generate the list of CSV file names
+files = [f for f in os.listdir(path) if f.endswith('.csv')] # any CSVs in the above defined path will be inserted in the list 
+
+# Remove spaces and lowercase file names, then load them into the database
 with db.connect() as conn: 
-    for file in files: 
-        df = pd.read_csv(f'{path}{file}.csv')
+    for file in files:
+        df = pd.read_csv(os.path.join(path, file))
         df.columns = [col.lower() for col in df.columns]
-        table_name = file.replace(' ', '_').lower()
+        table_name = file.replace(' ', '_').replace('.csv', '').lower()
         df.to_sql(table_name, con=conn, if_exists='replace', index=False)
 ```
 **Important Notes**
